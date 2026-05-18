@@ -1,0 +1,327 @@
+.todo-node {
+  position: relative;
+  background: rgba(26, 26, 37, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  cursor: grab;
+  transition: all var(--transition-base);
+  animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+}
+
+.todo-node:hover {
+  background: rgba(30, 30, 42, 0.8);
+  border-color: var(--border-accent);
+  transform: translateX(8px);
+  box-shadow: var(--shadow-md);
+}
+
+.todo-node:hover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent-coral), var(--accent-violet));
+  border-radius: 3px 0 0 3px;
+}
+
+.todo-node.dragging {
+  opacity: 0.5;
+  cursor: grabbing;
+  background: rgba(168, 85, 247, 0.1);
+  border-color: var(--accent-violet);
+  box-shadow: 0 0 30px var(--accent-violet-glow);
+}
+
+.todo-node.completed {
+  opacity: 0.6;
+}
+
+.todo-node.completed:hover {
+  opacity: 0.8;
+}
+
+.todo-node-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.todo-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
+}
+
+.expand-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.expand-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--accent-teal);
+  border-color: var(--accent-teal);
+}
+
+.expand-placeholder {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.checkbox-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.custom-checkbox {
+  position: relative;
+  z-index: 2;
+}
+
+.custom-checkbox :global(.ant-checkbox-inner) {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 2px solid var(--border-accent);
+  background: transparent;
+  transition: all var(--transition-fast);
+}
+
+.custom-checkbox :global(.ant-checkbox-inner::after) {
+  border-radius: 3px;
+}
+
+.custom-checkbox :global(.ant-checkbox-checked .ant-checkbox-inner) {
+  background: linear-gradient(135deg, var(--accent-teal) 0%, #5eddd4 100%);
+  border-color: var(--accent-teal);
+  box-shadow: 0 0 15px var(--accent-teal-glow);
+}
+
+.checkbox-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, var(--accent-teal-glow) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.checkbox-glow.checked {
+  opacity: 1;
+}
+
+.priority-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.priority-badge:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--glow-color);
+  box-shadow: 0 0 15px var(--glow-color);
+}
+
+.priority-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.priority-text {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.todo-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  flex: 1;
+}
+
+.todo-title {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.4;
+  transition: all var(--transition-fast);
+  word-break: break-word;
+}
+
+.todo-title.completed {
+  color: var(--text-muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--accent-teal);
+  text-decoration-thickness: 2px;
+}
+
+.todo-description {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.todo-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all var(--transition-base);
+}
+
+.todo-node:hover .todo-actions {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 14px;
+}
+
+.action-button:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-accent);
+}
+
+.action-button.add:hover {
+  background: rgba(78, 205, 196, 0.1);
+  color: var(--accent-teal);
+  border-color: var(--accent-teal);
+  box-shadow: 0 4px 12px var(--accent-teal-glow);
+}
+
+.action-button.edit:hover {
+  background: rgba(168, 85, 247, 0.1);
+  color: var(--accent-violet);
+  border-color: var(--accent-violet);
+  box-shadow: 0 4px 12px var(--accent-violet-glow);
+}
+
+.action-button.delete:hover {
+  background: rgba(255, 107, 107, 0.1);
+  color: var(--accent-coral);
+  border-color: var(--accent-coral);
+  box-shadow: 0 4px 12px var(--accent-coral-glow);
+}
+
+.tree-connector {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -12px;
+  height: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.tree-connector.expanded {
+  opacity: 1;
+}
+
+.connector-line {
+  position: absolute;
+  width: 2px;
+  height: 12px;
+  background: linear-gradient(180deg, var(--border-accent) 0%, transparent 100%);
+  border-radius: 1px;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+@media (max-width: 768px) {
+  .todo-node {
+    padding: 12px 16px;
+    margin-bottom: 8px;
+  }
+
+  .todo-left {
+    gap: 12px;
+  }
+
+  .priority-badge {
+    padding: 4px 8px;
+  }
+
+  .priority-text {
+    display: none;
+  }
+
+  .todo-actions {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .todo-title {
+    font-size: 0.9rem;
+  }
+}
