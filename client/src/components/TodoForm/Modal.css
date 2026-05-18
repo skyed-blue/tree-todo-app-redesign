@@ -1,0 +1,323 @@
+.custom-modal .ant-modal-content {
+  background: rgba(18, 18, 26, 0.98) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-lg), 0 0 60px rgba(168, 85, 247, 0.15);
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.custom-modal .ant-modal-header {
+  background: transparent !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+  padding: 24px 28px !important;
+  margin: 0 !important;
+}
+
+.custom-modal .ant-modal-body {
+  padding: 28px !important;
+}
+
+.custom-modal .ant-modal-footer {
+  border-top: 1px solid var(--border-subtle) !important;
+  padding: 20px 28px !important;
+  margin: 0 !important;
+}
+
+.modal-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.title-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, var(--accent-coral), var(--accent-violet));
+  border-radius: var(--radius-md);
+  color: white;
+  box-shadow: 0 4px 15px var(--accent-coral-glow);
+  transition: transform var(--transition-spring);
+}
+
+.title-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.modal-title:hover .title-icon {
+  transform: rotate(15deg) scale(1.05);
+}
+
+.title-icon.edit {
+  background: linear-gradient(135deg, var(--accent-violet), #c084fc);
+  box-shadow: 0 4px 15px var(--accent-violet-glow);
+}
+
+.modal-form .ant-form-item-label > label {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary) !important;
+  margin-bottom: 8px;
+}
+
+.modal-form .ant-form-item {
+  margin-bottom: 20px !important;
+}
+
+.custom-input,
+.custom-textarea {
+  background: rgba(26, 26, 37, 0.6) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md) !important;
+  color: var(--text-primary) !important;
+  font-size: 0.95rem !important;
+  padding: 12px 16px !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.custom-input:hover,
+.custom-textarea:hover {
+  border-color: var(--border-accent) !important;
+}
+
+.custom-input:focus,
+.custom-textarea:focus,
+.custom-input:focus-within,
+.custom-textarea:focus-within {
+  border-color: var(--accent-teal) !important;
+  box-shadow: 0 0 0 3px var(--accent-teal-glow) !important;
+}
+
+.custom-input::placeholder,
+.custom-textarea::placeholder {
+  color: var(--text-muted) !important;
+}
+
+.custom-textarea textarea {
+  background: transparent !important;
+  color: var(--text-primary) !important;
+}
+
+.custom-select .ant-select-selector {
+  background: rgba(26, 26, 37, 0.6) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 12px 16px !important;
+  height: auto !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.custom-select .ant-select-selector:hover {
+  border-color: var(--border-accent) !important;
+}
+
+.custom-select.ant-select-focused .ant-select-selector {
+  border-color: var(--accent-teal) !important;
+  box-shadow: 0 0 0 3px var(--accent-teal-glow) !important;
+}
+
+.custom-select .ant-select-selection-item {
+  color: var(--text-primary) !important;
+  font-weight: 500 !important;
+}
+
+.custom-select .ant-select-arrow {
+  color: var(--text-muted) !important;
+}
+
+.priority-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0;
+}
+
+.priority-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.priority-dot.low {
+  background: var(--priority-low);
+  box-shadow: 0 0 8px rgba(107, 114, 128, 0.5);
+}
+
+.priority-dot.medium {
+  background: var(--priority-medium);
+  box-shadow: 0 0 8px var(--accent-amber-glow);
+}
+
+.priority-dot.high {
+  background: var(--priority-high);
+  box-shadow: 0 0 8px var(--accent-coral-glow);
+}
+
+.custom-modal .ant-btn {
+  height: auto !important;
+  padding: 12px 28px !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  border-radius: var(--radius-lg) !important;
+  transition: all var(--transition-spring) !important;
+}
+
+.custom-modal .ant-btn-default {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary) !important;
+}
+
+.custom-modal .ant-btn-default:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: var(--border-accent) !important;
+  color: var(--text-primary) !important;
+  transform: translateY(-2px);
+}
+
+.custom-modal .ant-btn-primary {
+  background: linear-gradient(135deg, var(--accent-coral), var(--accent-violet)) !important;
+  border: none !important;
+  color: white !important;
+  box-shadow: 0 4px 15px var(--accent-coral-glow) !important;
+}
+
+.custom-modal .ant-btn-primary:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 6px 25px var(--accent-coral-glow), 0 0 40px var(--accent-coral-glow) !important;
+}
+
+.custom-modal .ant-btn-primary:active {
+  transform: translateY(0) scale(0.98) !important;
+}
+
+.custom-modal .ant-btn-loading {
+  opacity: 0.7 !important;
+}
+
+.custom-modal .ant-modal-close {
+  top: 20px !important;
+  right: 20px !important;
+  width: 36px !important;
+  height: 36px !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md) !important;
+  color: var(--text-secondary) !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.custom-modal .ant-modal-close:hover {
+  background: rgba(255, 107, 107, 0.1) !important;
+  border-color: var(--accent-coral) !important;
+  color: var(--accent-coral) !important;
+}
+
+.custom-popconfirm .ant-popover-inner {
+  background: rgba(18, 18, 26, 0.98) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-lg) !important;
+  padding: 20px !important;
+}
+
+.custom-popconfirm .ant-popover-title {
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+  font-family: var(--font-display) !important;
+  margin-bottom: 8px !important;
+}
+
+.custom-popconfirm .ant-popover-description {
+  color: var(--text-secondary) !important;
+  font-size: 0.9rem !important;
+  margin-bottom: 16px !important;
+}
+
+.custom-popconfirm .ant-popover-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.custom-popconfirm .ant-btn {
+  padding: 8px 20px !important;
+  border-radius: var(--radius-md) !important;
+  font-weight: 600 !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.custom-popconfirm .ant-btn-default {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary) !important;
+}
+
+.custom-popconfirm .ant-btn-default:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: var(--text-primary) !important;
+}
+
+.custom-popconfirm .ant-btn-primary {
+  background: linear-gradient(135deg, var(--accent-coral), #ff8585) !important;
+  border: none !important;
+  color: white !important;
+  box-shadow: 0 4px 12px var(--accent-coral-glow) !important;
+}
+
+.custom-popconfirm .ant-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px var(--accent-coral-glow) !important;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-modal .ant-modal-header {
+    padding: 20px 24px !important;
+  }
+
+  .custom-modal .ant-modal-body {
+    padding: 20px 24px !important;
+  }
+
+  .custom-modal .ant-modal-footer {
+    padding: 16px 24px !important;
+  }
+
+  .modal-title {
+    font-size: 1.1rem;
+  }
+
+  .title-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .title-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+}
